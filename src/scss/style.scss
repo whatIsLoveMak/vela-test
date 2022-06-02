@@ -1,0 +1,295 @@
+//Миксин для подключения шрифтов
+@mixin font($font_name, $file_name, $weight, $style) {
+    @font-face {
+        font-family: $font_name;
+        font-display: swap;
+        src: url("../fonts/#{$file_name}.woff") format("woff"),
+        url("../fonts/#{$file_name}.woff2") format("woff2");
+        font-weight: #{$weight};
+        font-style: #{$style};
+    }
+}
+
+// Импорты
+@import "fonts";
+@import 'nullstyle';
+@import 'footer';
+@import 'headerstyle';
+body {
+    color: #101628;
+    font-family: 'Manrope', sans-serif;
+}
+
+a {
+    display: block;
+}
+
+.container {
+    max-width: 1480px;
+    padding: 0px 20px;
+    margin: 0 auto;
+}
+
+.main-content {
+    background: #F8F8FB;
+}
+
+.main-row {
+    display: flex;
+    flex-direction: row;
+    &__left-side {
+        max-width: 305px;
+        width: 100%;
+        background: white;
+        @media(max-width: 1024px) {
+            display: none;
+        }
+        & .side-menu {
+            display: flex;
+            flex-direction: column;
+            &__item {
+                position: relative;
+                padding: 10px 0px;
+                transition: all 0.4s ease;
+                &-row {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: center;
+                    padding-left: 60px;
+                }
+                &-img {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background: #F8F8FB;
+                    margin-right: 20px;
+                    & svg {
+                        width: 20px;
+                        height: 20px;
+                        transition: all 0.4s ease;
+                        fill: #101628;
+                    }
+                }
+                &-text {
+                    max-width: 120px;
+                    font-size: 15px;
+                    line-height: 20px;
+                    font-weight: 600;
+                    transition: all 0.4s ease;
+                }
+            }
+            &__link {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            &__item:hover .side-menu__item-text {
+                color: #46A44E;
+            }
+            &__item:hover .side-menu__item-img svg {
+                fill: #46A44E;
+            }
+        }
+    }
+    &__right-side {
+        width: 100%;
+        & .side-content {
+            display: flex;
+            &__main {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 20px 60px 0px 60px;
+                max-width: 730px;
+                width: 100%;
+                @media(max-width: 1024px) {
+                    padding: 20px 0px 0px 0px;
+                    max-width: 100%;
+                    position: relative;
+                    overflow: hidden;
+                }
+                & .breadcrumbs {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: center;
+                    @media(max-width: 1024px) {
+                        position: absolute;
+                        top: 20px;
+                        left: 0;
+                        height: 14px;
+                    }
+                    &-item {
+                        margin-right: 10px;
+                        @media(max-width: 1024px) {
+                            white-space: nowrap;
+                        }
+                        & a {
+                            color: #101628;
+                            font-size: 13px;
+                            line-height: 16px;
+                            font-weight: 600;
+                            @media(max-width: 1024px) {
+                                font-size: 12px;
+                                line-height: 14px;
+                            }
+                        }
+                    }
+                    &-item.active a {
+                        color: #AFAFB0;
+                    }
+                }
+                &-container {
+                    padding: 50px 0px 100px 0px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 100%;
+                    @media(max-width: 1024px) {
+                        padding: 36px 0px 70px 0px;
+                    }
+                    & .title h1 {
+                        font-size: 44px;
+                        line-height: 52px;
+                        font-weight: 800;
+                        @media(max-width: 1024px) {
+                            font-size: 32px;
+                            line-height: 38px;
+                            margin-bottom: 126px;
+                        }
+                    }
+                    & .information {
+                        display: flex;
+                        flex-direction: column;
+                        &-title {
+                            font-size: 15px;
+                            line-height: 22px;
+                            font-weight: 500;
+                            margin-bottom: 15px;
+                            @media(max-width: 1024px) {
+                                font-size: 14px;
+                            }
+                        }
+                        &-numbers {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: flex-start;
+                            margin-bottom: 25px;
+                            @media(max-width: 1024px) {
+                                flex-wrap: wrap;
+                            }
+                            &-item {
+                                padding: 8px 16px;
+                                border-radius: 60px;
+                                background: white;
+                                transition: all 0.4s ease;
+                                font-size: 13px;
+                                line-height: 15px;
+                                font-weight: 600;
+                                color: #101628;
+                                @media(max-width: 1024px) {
+                                    font-size: 14px;
+                                    line-height: 18px;
+                                }
+                            }
+                            &-item.active,
+                            &-item:hover {
+                                background: #46A44E;
+                                color: white;
+                            }
+                            &-item:not(:last-child) {
+                                margin-right: 10px;
+                            }
+                        }
+                        &-price {
+                            font-size: 24px;
+                            line-height: 32px;
+                            font-weight: 700;
+                            color: #46A44E;
+                            margin-bottom: 30px;
+                        }
+                        &-button {
+                            margin-bottom: 15px;
+                            & .fixed {
+                                padding: 18px 30px;
+                                font-size: 15px;
+                                line-height: 20px;
+                                font-weight: 600;
+                                color: white;
+                                background: #101628;
+                                @media(max-width: 1024px) {
+                                    font-size: 14px;
+                                    line-height: 18px;
+                                }
+                            }
+                        }
+                        &-individual {
+                            max-width: 380px;
+                            font-size: 13px;
+                            line-height: 18px;
+                            font-weight: 500;
+                            color: #8B8B8F;
+                            @media(max-width: 1024px) {
+                                font-size: 11px;
+                                line-height: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+            &__img {
+                max-width: 405px;
+                width: 100%;
+                @media(max-width: 1024px) {
+                    display: none;
+                }
+                & img {
+                    width: 100%;
+                }
+            }
+        }
+        & .side-advantages {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 40px 60px 60px 60px;
+            background: #46A44E;
+            @media(max-width: 1024px) {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                row-gap: 30px;
+                padding: 40px 20px;
+            }
+            &__item {
+                display: flex;
+                flex-direction: column;
+                &-mark {
+                    font-size: 48px;
+                    line-height: 53px;
+                    font-weight: 700;
+                    margin-right: 10px;
+                    color: white;
+                    @media(max-width: 1024px) {
+                        font-size: 40px;
+                        line-height: 44px;
+                    }
+                }
+                &-description {
+                    font-size: 15px;
+                    line-height: 22px;
+                    font-weight: 500;
+                    color: white;
+                    @media(max-width: 1024px) {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
