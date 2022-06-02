@@ -838,6 +838,10 @@ a {
     line-height: 18px;
   }
 }
+.main-row__right-side .side-content__main-container .information-button .fixed img {
+  margin-top: 5px;
+  margin-left: 5px;
+}
 .main-row__right-side .side-content__main-container .information-individual {
   max-width: 380px;
   font-size: 13px;
